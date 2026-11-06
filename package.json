@@ -1,0 +1,26 @@
+{
+  "name": "rmvm-advogados",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm --prefix frontend install && npm --prefix backend install",
+    "setup": "npm --prefix frontend install && npm --prefix backend install && node scripts/mariadb.js start --quiet && npm --prefix backend run prisma:generate && npm --prefix backend run prisma:deploy",
+    "predev": "node scripts/mariadb.js start --quiet && npm --prefix backend run prisma:generate && npm --prefix backend run prisma:deploy",
+    "dev": "node scripts/dev.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "prebuild": "npm --prefix frontend run lint",
+    "build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint",
+    "prestart": "npm --prefix backend run prisma:deploy",
+    "start": "npm --prefix backend start",
+    "db:start": "node scripts/mariadb.js start",
+    "db:stop": "node scripts/mariadb.js stop",
+    "db:status": "node scripts/mariadb.js status",
+    "db:generate": "npm --prefix backend run prisma:generate",
+    "db:migrate": "npm --prefix backend run prisma:migrate",
+    "db:deploy": "npm --prefix backend run prisma:deploy",
+    "db:studio": "npm --prefix backend run prisma:studio"
+  }
+}
